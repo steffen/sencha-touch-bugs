@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;" />
+  <link rel="stylesheet" href="http://dev.sencha.com/deploy/touch/resources/css/sencha-touch.css" type="text/css">
+  <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/ext-touch-debug.js"></script>
+  <!-- <link rel="stylesheet" href="http://senchatouch/resources/css/ext-touch.css" type="text/css">
+  <script type="text/javascript" src="http://senchatouch/ext-touch-debug.js"></script> -->
+  <script>
+  Ext.setup({
+    onReady: function() {
+      Ext.regModel('Cars', {
+          fields: [
+              {name: 'text', type: 'string'}
+          ]
+      });
+
+      var store = new Ext.data.TreeStore({
+          model: 'Cars',
+          proxy: {
+              type: 'ajax',
+              url: 'carregions.json',
+              reader: {
+                  type: 'tree',
+                  root: 'items'
+              }
+          }
+      });
+      
+      new Ext.Panel({
+        fullscreen: true,
+        layout: 'card',
+        items: [{
+          layout: {
+            type: 'hbox',
+            align: 'stretch'
+          },
+          items: [new Ext.NestedList({
+            width: 250,
+            store: store
+          }),{
+            html: 'main panel'
+          }]
+        }]
+      });
+    }
+  });
+  </script>
+</head>
+<body>
+</body>
+</html>
