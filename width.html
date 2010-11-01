@@ -11,27 +11,32 @@
   Ext.setup({
     onReady: function() {
       new Ext.Panel({
-                  fullscreen: true,
-                  layout: 'card', // 'fit' doesn't work either
-                  items: [{
-                      dockedItems: [new Ext.Panel({
-                          dock: 'left',
-                          width: 250,
-                          html: 'docked panel'
-                      })],
-                      items: [{
-                              dockedItems: [{
-                                ui: 'dark',
-                                dock: 'top',
-                                xtype: 'toolbar',
-                                title: 'Main Panel'
-                              }],
-                          html: 'main panel'
-                      }]
-                  }]
-              });
-    }
-  });
+        fullscreen: true,
+        // layout: {type: 'hbox', align: 'stretch'}, // works, but I need card layout
+        layout: 'card', // 'fit' doesn't work either
+        items: [{
+          // flex: 1,
+          layout: 'fit',
+          // layout: {type: 'hbox', align: 'stretch'},
+          dockedItems: [new Ext.Panel({
+            dock: 'left',
+            width: 250,
+            html: 'docked panel'
+            })],
+            items: [{
+              // flex: 1,
+              dockedItems: [{
+                ui: 'dark',
+                dock: 'top',
+                xtype: 'toolbar',
+                title: 'Main Panel'
+              }],
+              html: 'main panel'
+            }]
+          }]
+        });
+      }
+    });
   </script>
 </head>
 <body>
