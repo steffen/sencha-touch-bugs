@@ -10,33 +10,29 @@
   <script>
   Ext.setup({
     onReady: function() {
-      new Ext.Panel({
+      panel = new Ext.Panel({
         fullscreen: true,
-        // layout: {type: 'hbox', align: 'stretch'}, // works, but I need card layout
-        layout: 'card', // 'fit' doesn't work either
-        items: [{
-          // flex: 1,
+        layout: 'card',
+        items: {
+          id: 'innerPanel',
           layout: 'fit',
-          // layout: {type: 'hbox', align: 'stretch'},
-          dockedItems: [new Ext.Panel({
+          dockedItems: new Ext.Panel({
             dock: 'left',
             width: 250,
-            html: 'docked panel'
-            })],
-            items: [{
-              // flex: 1,
-              dockedItems: [{
-                ui: 'dark',
-                dock: 'top',
-                xtype: 'toolbar',
-                title: 'Main Panel'
-              }],
-              html: 'main panel'
-            }]
-          }]
-        });
-      }
-    });
+            html: 'docked panel',
+            style: 'background-color: red; color: white'
+          }),
+          items: {
+            html: 'main panel',
+            style: 'background-color: gray; color: white'
+          }
+        }
+      });
+      
+      // Ext.getCmp('innerPanel').removeDocked(Ext.getCmp('innerPanel').dockedItems.first());
+      // Ext.getCmp('innerPanel').doComponentLayout(); Not helping
+    }
+  });
   </script>
 </head>
 <body>
