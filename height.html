@@ -4,9 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;" />
   <link rel="stylesheet" href="http://dev.sencha.com/deploy/touch/resources/css/sencha-touch.css" type="text/css">
-  <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/ext-touch-debug.js"></script>
-  <!-- <link rel="stylesheet" href="http://senchatouch/resources/css/ext-touch.css" type="text/css">
-  <script type="text/javascript" src="http://senchatouch/ext-touch-debug.js"></script> -->
+  <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/sencha-touch-debug.js"></script>
   <script>
   Ext.setup({
     onReady: function() {
@@ -36,10 +34,14 @@
             type: 'hbox',
             align: 'stretch'
           },
-          items: [new Ext.NestedList({
+          items: [{
             width: 250,
-            store: store
-          }),{
+            layout: 'fit',
+            items: new Ext.NestedList({
+                store: store
+              })
+          },{
+            flex: 1,
             html: 'main panel'
           }]
         }]
