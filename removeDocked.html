@@ -4,8 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;" />
   <link rel="stylesheet" href="http://dev.sencha.com/deploy/touch/resources/css/sencha-touch.css" type="text/css">
-  <!-- <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/sencha-touch-debug.js"></script> -->
-  <script type="text/javascript" src="http://senchatouch/sencha-touch-0.99/sencha-touch-debug.js"></script>
+  <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/sencha-touch-debug.js"></script>
+  <!-- <script type="text/javascript" src="http://senchatouch/sencha-touch-0.99/sencha-touch-debug.js"></script> -->
   <!-- <link rel="stylesheet" href="http://senchatouch/resources/css/sencha-touch.css" type="text/css">
   <script type="text/javascript" src="http://senchatouch/ext-touch-debug.js"></script> -->
   <script>
@@ -30,28 +30,10 @@
         }
       });
       
-      item = Ext.getCmp('innerPanel').items.first();
-      
-      remove = function () {
-        var cmp = Ext.getCmp('innerPanel'),
-            dockedItem = cmp.dockedItems.first();
-        
-        // debugger
-        cmp.removeDocked(dockedItem);
-        // panel.doLayout();
-        // item.afterLayout();
-        panel.setSize(window.innerWidth, window.innerHeight-1)
-        panel.setSize(window.innerWidth, window.innerHeight+1)
-      }
-      
-      Ext.util.Observable.capture(panel, function (e) {
-        console.trace();
-        // debugger;
-        console.log(e);
-      });
-      remove();
-      // Ext.getCmp('innerPanel').removeDocked(Ext.getCmp('innerPanel').dockedItems.first());
-      // Ext.getCmp('innerPanel').doComponentLayout(); Not helping
+      setTimeout(function(){
+          var inner = Ext.getCmp('innerPanel');
+          inner.removeDocked(inner.dockedItems.first());
+      }, 1000);
     }
   });
   </script>
