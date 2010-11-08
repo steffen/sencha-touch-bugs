@@ -11,7 +11,7 @@
   <script>
   Ext.setup({
     onReady: function() {
-      panel = new Ext.Panel({
+      var panel = new Ext.Panel({
         fullscreen: true,
         layout: 'card',
         items: {
@@ -30,28 +30,13 @@
         }
       });
       
-      item = Ext.getCmp('innerPanel').items.first();
+      var cmp = Ext.getCmp('innerPanel'),
+          mainPanel = cmp.items.first();
       
-      remove = function () {
-        var cmp = Ext.getCmp('innerPanel'),
-            dockedItem = cmp.dockedItems.first();
-        
-        // debugger
-        cmp.removeDocked(dockedItem);
-        // panel.doLayout();
-        // item.afterLayout();
-        panel.setSize(window.innerWidth, window.innerHeight-1)
-        panel.setSize(window.innerWidth, window.innerHeight+1)
-      }
+      cmp.remove(mainPanel); // working
+      cmp.add(mainPanel); // not working, adding nothing, screen stays blank
       
-      Ext.util.Observable.capture(panel, function (e) {
-        console.trace();
-        // debugger;
-        console.log(e);
-      });
-      remove();
-      // Ext.getCmp('innerPanel').removeDocked(Ext.getCmp('innerPanel').dockedItems.first());
-      // Ext.getCmp('innerPanel').doComponentLayout(); Not helping
+      cmp.doLayout(); // not helping
     }
   });
   </script>
