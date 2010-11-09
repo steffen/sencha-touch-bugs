@@ -31,10 +31,7 @@
           mainPanel = cmp.items.first();
       
       cmp.remove(mainPanel); // working
-      cmp.add({
-        html: 'main panel',
-        style: 'background-color: gray; color: white'
-      });
+      cmp.add(mainPanel);
        // not working, adding nothing, screen stays blank
       
       cmp.doComponentLayout(); // not helping
