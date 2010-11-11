@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;" />
+  <link rel="stylesheet" href="http://dev.sencha.com/deploy/touch/resources/css/sencha-touch.css" type="text/css">
+  <script type="text/javascript" src="http://dev.sencha.com/deploy/touch/sencha-touch-debug.js"></script>
+  <script>
+  Ext.setup({
+    onReady: function() {
+      var segmentedButton = new Ext.Toolbar({
+          dock: 'top',
+          layout: {
+              pack: 'center'
+          },
+          items: [{
+              xtype: 'segmentedbutton',
+              items: [{ text: 'button 1' }, { text: 'button 2' }]
+          }]
+      });
+            
+      var panel = new Ext.Panel({
+        fullscreen: true,
+        layout: 'card',
+        dockedItems: segmentedButton,
+        items: {
+          html: 'main panel',
+          style: 'background-color: gray; color: white'
+        }
+      });
+      
+      var addItems = function () {
+        segmentedButton.add({ text: 'button 3' })
+        segmentedButton.add([{ text: 'button 4' }, { text: 'button 5' }])
+        // segmentedButton.doComponentLayout();
+        segmentedButton.doLayout();
+      };
+      
+      setTimeout(addItems, 1000);
+    }
+  });
+  </script>
+</head>
+<body>
+</body>
+</html>
